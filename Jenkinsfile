@@ -79,7 +79,7 @@ pipeline {
 
                     
 
-                 {
+                 
 
                     bat """
                     npx playwright test ^
@@ -87,7 +87,7 @@ pipeline {
                     --workers=%WORKERS%
                     """
 
-                }
+                
 
             }
 
