@@ -60,7 +60,7 @@ pipeline {
             steps {
 
                 withCredentials([
-                    file(credentialsId: 'playwright', variable: 'ENV_FILE')
+                    file(credentialsId: 'Playwright', variable: 'ENV_FILE')
                 ]) {
 
                     bat 'copy "%ENV_FILE%" .env'
