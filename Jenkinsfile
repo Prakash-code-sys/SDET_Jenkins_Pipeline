@@ -95,22 +95,16 @@ pipeline {
 
     }
 
-    post {
-
-        always {
-
-            publishHTML([
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'Playwright Report'
-            ])
-
-            archiveArtifacts artifacts: 'playwright-report/**'
-
-            junit 'test-results/*.xml'
-
-        }
-
+   post {
+    always {
+        publishHTML(target: [
+            allowMissing: false,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'playwright-report',
+            reportFiles: 'index.html',
+            reportName: 'Playwright Report'
+        ])
     }
-
+}
 }
