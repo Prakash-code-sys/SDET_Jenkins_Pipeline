@@ -178,7 +178,7 @@ process.env.ENV
 Run:
 ENV=QA npx playwright test
 
-17. How do you run different environments?
+## 17. How do you run different environments?
 Example:
 QA
 
@@ -193,7 +193,7 @@ PROD
 Run:
 BASE_URL=https://qa.site.com npx playwright test
 
-18. What plugins are commonly used?
+## 18. What plugins are commonly used?
 Git 
 NodeJS 
 HTML Publisher 
@@ -203,7 +203,7 @@ BASE_URL=https://qa.site.com npx playwright test
 Email Extension 
 Slack Notification 
 
-19. What is the use of Credentials in Jenkins?
+## 19. What is the use of Credentials in Jenkins?
 Credentials securely store:
 Username 
 Password 
@@ -212,12 +212,12 @@ Credentials securely store:
 Tokens 
 Never hardcode secrets.
 
-20. How do you use credentials?
+## 20. How do you use credentials?
 environment {
     USER = credentials('login-user')
 }
 
-21. What is a Jenkins Agent?
+## 21. What is a Jenkins Agent?
 Answer:
 Agent (formerly Slave) executes build jobs.
 Master schedules jobs.
@@ -229,32 +229,32 @@ Master
    |
    |------Agent Docker
 
-22. How do you execute Playwright on Linux?
+## 22. How do you execute Playwright on Linux?
 npm install
 
 npx playwright install
 
 npx playwright test
 
-23. How do you execute on Windows?
+## 23. How do you execute on Windows?
 npm install
 
 npx playwright install
 
 npx playwright test
 
-24. How do you schedule nightly execution?
+## 24. How do you schedule nightly execution?
 Cron:
 0 1 * * *
 Runs every day at 1 AM.
 
-25. How do you retry failed builds?
+## 25. How do you retry failed builds?
 Use pipeline:
 retry(2){
     sh 'npx playwright test'
 }
 
-26. What happens when a Playwright test fails?
+## 26. What happens when a Playwright test fails?
 Jenkins:
 Marks build as Failed 
 Generates report 
@@ -263,7 +263,7 @@ Jenkins:
 Stores trace 
 Sends notifications 
 
-27. How do you send email after execution?
+## 27. How do you send email after execution?
 Post section:
 post {
     always {
@@ -273,18 +273,18 @@ post {
     }
 }
 
-28. How do you parallelize Playwright tests in Jenkins?
+## 28. How do you parallelize Playwright tests in Jenkins?
 Playwright configuration:
 workers: 4
 Or:
 npx playwright test --workers=4
 
-29. How do you run specific browsers?
+## 29. How do you run specific browsers?
 npx playwright test --project=chromium
 or
 npx playwright test --project=firefox
 
-30. Explain a Jenkins Pipeline for Playwright.
+## 30. Explain a Jenkins Pipeline for Playwright.
 Example:
 pipeline {
     agent any
@@ -319,7 +319,7 @@ pipeline {
     }
 }
 
-1. A Jenkins build passes locally but fails on the CI server. How would you investigate?
+## 1. A Jenkins build passes locally but fails on the CI server. How would you investigate?
 Answer
 First, I would compare the local and Jenkins environments to identify differences.
 My troubleshooting steps would be:
@@ -337,7 +337,7 @@ npx playwright test --trace on
 Interview Tip:
 Mention that CI environments are usually slower than local machines, so flaky tests often appear there first.
 
-2. How would you execute smoke tests after every commit and regression tests nightly?
+## 2. How would you execute smoke tests after every commit and regression tests nightly?
 Answer
 I would create two Jenkins jobs (or two pipeline stages).
 Smoke Pipeline
@@ -356,7 +356,7 @@ Command
 npx playwright test
 This strategy gives fast feedback for every commit while ensuring complete regression coverage overnight.
 
-3. How would you parameterize a Jenkins job to run against QA, UAT, or Production?
+## 3. How would you parameterize a Jenkins job to run against QA, UAT, or Production?
 Answer
 I would create a Jenkins Choice Parameter.
 Parameter:
@@ -390,7 +390,7 @@ export default defineConfig({
 });
 This allows the same automation suite to run against multiple environments without changing the code.
 
-4. How do you securely manage usernames, passwords, and API tokens in Jenkins?
+## 4. How do you securely manage usernames, passwords, and API tokens in Jenkins?
 Answer
 Sensitive information should never be hardcoded.
 Instead, I would:
@@ -405,7 +405,7 @@ Playwright:
 process.env.USERNAME
 This approach keeps credentials encrypted and prevents exposure in source code.
 
-5. How would you configure Jenkins to run Playwright tests in parallel across multiple browsers?
+## 5. How would you configure Jenkins to run Playwright tests in parallel across multiple browsers?
 Answer
 Playwright supports parallel execution using projects and workers.
 Example configuration:
@@ -420,7 +420,7 @@ Or specify workers:
 npx playwright test --workers=4
 Jenkins allocates CPU resources, while Playwright executes tests in parallel, reducing execution time significantly.
 
-6. How do you publish Playwright HTML reports and JUnit reports after every execution?
+## 6. How do you publish Playwright HTML reports and JUnit reports after every execution?
 Answer
 After execution:
 npx playwright test
@@ -440,7 +440,7 @@ Install the HTML Publisher Plugin to publish:
 playwright-report/index.html
 Even if tests fail, reports are still available for debugging.
 
-7. What steps would you take if npx playwright install fails on the Jenkins agent?
+## 7. What steps would you take if npx playwright install fails on the Jenkins agent?
 Answer
 I would investigate in the following order:
 Verify internet connectivity. 
@@ -454,7 +454,7 @@ npx playwright install
 npx playwright install --with-deps
 Review the Jenkins console log for detailed error messages. 
 
-8. How do you clean the Jenkins workspace before or after each build?
+## 8. How do you clean the Jenkins workspace before or after each build?
 Answer
 Cleaning the workspace prevents leftover files from previous builds from affecting new executions.
 Options:
@@ -469,7 +469,7 @@ Benefits:
 Removes cached files 
 Ensures consistent executions 
 
-9. How do you trigger a Jenkins job automatically when code is pushed to GitHub?
+## 9. How do you trigger a Jenkins job automatically when code is pushed to GitHub?
 Answer
 I use a GitHub Webhook.
 Process:
@@ -487,7 +487,7 @@ Configuration:
 Add the Jenkins webhook URL in the GitHub repository settings. 
 This provides immediate feedback after every commit.
 
-10. What is the difference between npm install and npm ci, and which one is preferable in CI/CD?
+## 10. What is the difference between npm install and npm ci, and which one is preferable in CI/CD?
 Answer
 npm install	npm ci
 Installs dependencies and may update package-lock.json	Installs exactly what's in package-lock.json
@@ -499,7 +499,7 @@ Interview Answer:
 In Jenkins or any CI/CD pipeline, I prefer npm ci because it performs a clean, deterministic installation based on the package-lock.json file. This ensures every build uses the exact same dependency versions, making test execution more reliable and reproducible.
 
 ⭐ Bonus Scenario Questions Frequently Asked
-11. One Playwright test is flaky in Jenkins but passes on rerun. What would you do?
+## 11. One Playwright test is flaky in Jenkins but passes on rerun. What would you do?
 Answer:
 Analyze Playwright traces and screenshots. 
 Replace hard waits (waitForTimeout()) with proper locators and assertions. 
@@ -507,7 +507,7 @@ Answer:
 Investigate backend or network delays. 
 Retry only if the test is genuinely flaky while working to fix the root cause. 
 
-12. Your Jenkins pipeline suddenly starts failing after a new dependency is added. How would you troubleshoot?
+## 12. Your Jenkins pipeline suddenly starts failing after a new dependency is added. How would you troubleshoot?
 Answer:
 Review the dependency changes in package.json. 
 Run npm ci locally to reproduce the issue. 
@@ -515,7 +515,7 @@ Answer:
 Verify compatibility with the Node.js version used by Jenkins. 
 Review the Jenkins console logs and, if necessary, revert the change to confirm the root cause. 
 
-13. How would you reduce Playwright execution time in Jenkins?
+## 13. How would you reduce Playwright execution time in Jenkins?
 Answer:
 Run tests in parallel using multiple workers. 
 Split smoke and regression suites. 
@@ -524,7 +524,7 @@ Answer:
 Run tests on multiple Jenkins agents if available. 
 Execute only impacted tests where feasible. 
 
-14. A test passes locally but fails only in headless mode. What would you do?
+## 14. A test passes locally but fails only in headless mode. What would you do?
 Answer:
 Compare headed and headless execution using Playwright traces and screenshots. 
 Check for timing or animation issues. 
@@ -532,7 +532,7 @@ Answer:
 Verify that elements are visible and actionable before interacting with them. 
 Avoid relying on visual timing differences between headed and headless modes. 
 
-Interview Tip
+## Interview Tip
 When answering scenario-based questions, use a structured approach:
 1.Identify the problem – Explain what you're investigating. 
 2.Analyze the logs and evidence – Jenkins console output, Playwright traces, screenshots, reports. 
