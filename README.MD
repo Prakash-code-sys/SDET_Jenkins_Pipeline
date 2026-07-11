@@ -1,4 +1,4 @@
-1. What is Jenkins?
+## 1. What is Jenkins?
 Answer:
 Jenkins is an open-source automation server used to automate the software development lifecycle, including:
 Build 
@@ -8,7 +8,7 @@ Jenkins is an open-source automation server used to automate the software develo
 Continuous Delivery (CD) 
 For Playwright, Jenkins automatically executes automation tests whenever code is pushed to the repository.
 
-2. What is Continuous Integration (CI)?
+## 2. What is Continuous Integration (CI)?
 Answer:
 Continuous Integration is the practice of automatically building and testing code whenever developers commit changes.
 Flow:
@@ -26,7 +26,7 @@ Generate Report
      ↓
 Email/Slack notification
 
-3. How do you integrate Playwright with Jenkins?
+## 3. How do you integrate Playwright with Jenkins?
 Answer:
 Steps:
 1.Install Jenkins 
@@ -40,7 +40,7 @@ npx playwright install
 npx playwright test
 7.Publish HTML Report 
 
-4. What is a Jenkins Pipeline?
+## 4. What is a Jenkins Pipeline?
 Answer:
 A Pipeline is a script that defines the build process as code.
 Example stages:
@@ -51,7 +51,7 @@ Example stages:
 Archive artifacts 
 Send notification 
 
-5. Difference between Freestyle Job and Pipeline?
+## 5. Difference between Freestyle Job and Pipeline?
 Freestyle	Pipeline
 GUI configuration	Code based
 Hard to maintain	Easy to maintain
@@ -60,7 +60,7 @@ No version control	Stored in Git
 Simple projects	Enterprise projects
 Pipeline is preferred.
 
-6. What is a Jenkinsfile?
+## 6. What is a Jenkinsfile?
 Answer:
 A Jenkinsfile is a text file containing pipeline stages.
 Example:
@@ -89,7 +89,7 @@ pipeline {
     }
 }
 
-7. How do you trigger Jenkins automatically?
+## 7. How do you trigger Jenkins automatically?
 Answer:
 Using:
 GitHub Webhook 
@@ -99,14 +99,14 @@ Using:
 Upstream Job 
 API Trigger 
 
-8. What is Poll SCM?
+## 8. What is Poll SCM?
 Answer:
 Jenkins checks the repository at regular intervals.
 Example:
 H/5 * * * *
 Checks every 5 minutes.
 
-9. What is GitHub Webhook?
+## 9. What is GitHub Webhook?
 Answer:
 Whenever code is pushed to GitHub, GitHub immediately notifies Jenkins.
 Flow:
@@ -121,21 +121,21 @@ Jenkins
 Run Tests
 Much faster than Poll SCM.
 
-10. How do you generate Playwright HTML reports in Jenkins?
+## 10. How do you generate Playwright HTML reports in Jenkins?
 Run:
 npx playwright test
 Playwright automatically creates:
 playwright-report/
 Publish this folder as HTML Report.
 
-11. How do you archive reports in Jenkins?
+## 11. How do you archive reports in Jenkins?
 Use:
 Archive Artifacts
 Example:
 playwright-report/**
 This preserves reports after the job completes.
 
-12. How do you publish Playwright reports?
+## 12. How do you publish Playwright reports?
 Install the HTML Publisher plugin.
 Post-build action:
 HTML Publisher
@@ -144,7 +144,7 @@ playwright-report
 File:
 index.html
 
-13. What is an Artifact?
+## 13. What is an Artifact?
 Answer:
 Artifacts are files generated during a build.
 Examples:
@@ -155,7 +155,7 @@ Examples:
 Logs 
 JUnit XML 
 
-14. How do you run Playwright in headless mode on Jenkins?
+## 14. How do you run Playwright in headless mode on Jenkins?
 npx playwright test
 Playwright runs headless by default in CI.
 Or configure:
@@ -163,14 +163,14 @@ use: {
     headless: true
 }
 
-15. How do you run only smoke tests?
+## 15. How do you run only smoke tests?
 Tag tests:
 test.describe('@smoke', () => {
 });
 Run:
 npx playwright test --grep @smoke
 
-16. How do you pass environment variables in Jenkins?
+## 16. How do you pass environment variables in Jenkins?
 Example:
 ENV=QA
 Access in Playwright:
